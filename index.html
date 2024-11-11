@@ -25,7 +25,7 @@
                   <span class="icon is-small is-right icon-check">
                     <i class="fas fa-check"></i>
                   </span>
-                  <span class="icon icon-remove is-small is-right">
+                  <span class="icon is-small is-right icon-remove">
                     <i class="fas fa-remove"></i>
                   </span>
                 </div>  
@@ -52,7 +52,47 @@
               const zip = document.querySelector('.zip').value;
               console.log(zip);
 
+
+              //Make request to Zippopotam.us API
+              fetch(`http://api.zippopotam.us/us/${zip}`)
+              .then(response => {
+                if(response.status != 200) {
+                    //call function to remove icon
+                    showIcon('remove');
+
+                    document.querySelector('#output').innerHTML = 
+                    `
+                    <article class="message  is-danger">
+                        <div class="message-body">
+                        Invalid Zipcode, please try again
+                        </div>
+                        </article>
+                    `;
+                    throw Error(response.statusText);
+
+                }  else 
+                {
+                    //call function to show icon 'check'
+                    showIcon('check');
+
+                    return response.json();
+                }
+              })
+              .then(data => {
+                
+              }) 
+              .catch(err => console.log(err));
+
                 e.preventDefault();
+            }
+
+            //Function to change check or 'x' icon
+            function showIcon(icon) {
+                //clear icons
+                document.querySelector('.icon-remove').style.display = 'none';
+                document.querySelector('.icon-check').style.display ='none';
+                //Once cleared, show correct Icon
+                document.querySelector(`.icon-${icon}`).style.display ='inline-flex';
             }
         </script>
 
