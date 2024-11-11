@@ -45,6 +45,10 @@
         <script>
             document.querySelector('#zipForm').addEventListener('submit', getLocationInfo);
 
+            //Button to listen for delete to clear data- listen on Body and then check to see if delete button was clicked, then run deleteLocation function
+            document.querySelector('body').addEventListener('click', deleteLocation);
+
+
             //function to listen for submit event
 
             function getLocationInfo(e) {
@@ -120,7 +124,18 @@
                 document.querySelector('.icon-check').style.display ='none';
                 //Once cleared, show correct Icon
                 document.querySelector(`.icon-${icon}`).style.display ='inline-flex';
-            }
+            };
+
+            //Function to delete location info and clear body
+           function deleteLocation(e) {
+            //if statement to check if the click in the body was on the delete button
+           if(e.target.className == 'delete') {
+            document.querySelector('.message').remove();
+            document.querySelector('.zip').value = '';
+            document.querySelector('.icon-check').remove();
+           }
+
+           }
         </script>
 
     </div>
