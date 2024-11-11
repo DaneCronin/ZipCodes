@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.min.css" integrity="sha512-RpeJZX3aH5oZN3U3JhE7Sd+HG8XQsqmP3clIbu4G28p668yNsRNj3zMASKe1ATjl/W80wuEtCx2dFA8xaebG5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <style>.icon-remove, .icon-check {display: none;}
+        </style>
+    <title>ZipCodes</title>
+</head>
+<body>
+    <section class="hero hero-body is-dark container">
+        <h1 class="title">US Location Info</h1>
+        <h2 class="subtitle">Enter a zipcode to get the location info</h2>
+        <form  id="zipForm">
+            <div class="field">
+               
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input zip is-large" type="text" placeholder="Enter Zipcode" >
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-map-pin"></i>
+                  </span>
+                  <span class="icon is-small is-right icon-check">
+                    <i class="fas fa-check"></i>
+                  </span>
+                  <span class="icon icon-remove is-small is-right">
+                    <i class="fas fa-remove"></i>
+                  </span>
+                </div>  
+              </div>        
+        </form>
+
+    </section>
+
+    <br>
+    <!--Returned output to display-->
+    <div class="container">
+        <div id="output">
+
+        </div>
+
+        <!--listen for submit-->
+        <script>
+            document.querySelector('#zipForm').addEventListener('submit', getLocationInfo);
+
+            //function to listen for submit event
+
+            function getLocationInfo(e) {
+              //get Zip value from input
+              const zip = document.querySelector('.zip').value;
+              console.log(zip);
+
+                e.preventDefault();
+            }
+        </script>
+
+    </div>
+    
+
+</body>
+</html>
