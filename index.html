@@ -67,9 +67,11 @@
                     document.querySelector('#output').innerHTML = 
                     `
                     <article class="message  is-danger">
+                         
                         <div class="message-body">
                         Invalid Zipcode, please try again
                         </div>
+                        <button class="delete"></button>
                         </article>
                     `;
                     throw Error(response.statusText);
@@ -117,7 +119,7 @@
                 e.preventDefault();
             }
 
-            //Function to change check or 'x' icon
+            //Function to change check or 'x' icon  
             function showIcon(icon) {
                 //clear icons
                 document.querySelector('.icon-remove').style.display = 'none';
@@ -133,6 +135,7 @@
             document.querySelector('.message').remove();
             document.querySelector('.zip').value = '';
             document.querySelector('.icon-check').remove();
+            document.querySelector('.icon-remove').remove();
            }
 
            }
